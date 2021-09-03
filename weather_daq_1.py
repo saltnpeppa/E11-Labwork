@@ -14,7 +14,7 @@ data = []
 
 f = lambda x: x * 1.8 + 32 # Convert C to F
 
-runtime = 10
+runtime = 5
 start_time = time.time()
 
 while runtime > 0: # Iterate for ten seconds, adding data to the data array each time with values for temperature and current time
