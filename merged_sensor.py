@@ -5,6 +5,8 @@ import csv
 import board
 import sys
 from adafruit_bme280 import basic as adafruit_bme280
+import matplotlib.pyplot as plt
+import numpy as np
 
 port = serial.Serial("/dev/serial0", baudrate = 9600,timeout = 1.5)
 
@@ -33,6 +35,7 @@ if len(sys.argv) > 1:
 
 
 while current_time < (start_time + interval): # Iterate for [user input] seconds, adding data to the data array each time with values for air quality and current time
+	
 	measurement1 = int.from_bytes(text[4:6], byteorder = "big")
 	measurement2 = int.from_bytes(text[6:8], byteorder = "big")
 	measurement3 = int.from_bytes(text[8:10], byteorder = "big")
@@ -41,10 +44,10 @@ while current_time < (start_time + interval): # Iterate for [user input] seconds
 
 	time.sleep(sleep_time)
 	current_time = time.time()
-
+	real_time = current_time - start_time
 	
-	temp_data.append((round(temp, 3), math.floor(current_time)))
-	air_data.append([(measurement1, math.floor(current_time)), (measurement2, math.floor(current_time)), (measurement3, math.floor(current_time))])
+	temp_data.append((round(temp, 3), math.floor(real_time)))
+	air_data.append([(measurement1, math.floor(real_time)), (measurement2, math.floor(real_time)), (measurement3, math.floor(real_time))])
 	
 
 myFile = open("merged_data.csv", "w")
@@ -60,4 +63,8 @@ for element in air_data: # Write PM1 data to the data file
 	
 	
 print("finished writing")
+flat = np.array(temp_data).flatten().reshape(5,2)
+print(flat[:,0])
+print(flat[:,1])
+plt.plot(flat[:,1], flat[:,0])
 
