@@ -30,13 +30,13 @@ def my_callback(channel):
 GPIO.add_event_detect(17, GPIO.FALLING, callback = my_callback)
 
 myFile2 = open(name + "_" + str(round(time.time()))+".csv", "w")
-myFile2.write("Counts" + " Timestamp" + "\n")
+myFile2.write("Counts," + " Timestamp" + "\n")
 
 while timestamp <= num_intervals * interval:
   timestamp += 1
   if timestamp % interval == 0:
     r.append([count, timestamp])
-    myFile2.write(str(count) + " " + str(timestamp) + "\n")
+    myFile2.write(str(count) + ", " + str(timestamp) + "\n")
     count = 0
     # timestamp = 0
   
