@@ -6,14 +6,14 @@ timestamp = 0
 count = 0
 r = []
 
-time.sleep(90) # REMOVE AFTER GOING BACK INSIDE
+#time.sleep(90) # REMOVE AFTER GOING BACK INSIDE
 
 print(sys.argv)
 
 if len(sys.argv) > 1:
-  interval = int(sys.argv[1])
+  interval = int(sys.argv[1]) # Seconds between each measurement
   if len(sys.argv) > 2:
-    num_intervals = int(sys.argv[2])
+    num_intervals = int(sys.argv[2]) # number of intervals measured
     if len(sys.argv) > 3:
       name = str(sys.argv[3])
 
