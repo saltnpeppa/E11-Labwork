@@ -67,6 +67,9 @@ print("finished writing")
 #data_temps = flat[:,0]
 #data_times = flat[:,1]
 
+
+
+
 myFile2.write("Temperature, " + "Pressure, " + "Relative_Humidity, " + "Air_Quality_PM1, " + "Air_Quality_PM2.5, " + "Air_Quality_PM10, " + "Timestamp" + "\n")
 for i in range(0, len(temp_data)):
 	myFile2.write(str(temp_data[i][0]) + ", " + str(pres_data[i]) + ", " + str(humid_data[i]) + ", " + str(air_data[i][0][0]) + ", " + str(air_data[i][1][0]) + ", " + str(air_data[i][2][0]) + ", " +  str(temp_data[i][1]) + "\n")
