@@ -75,9 +75,10 @@ class Final:
 
 
     def parse_data(self):
+        
         data_mean = np.mean(self.data["Counts"])
         data_std = np.std(self.data["Counts"])
-        print(f"The relative uncertainty is: {data_std/data/mean}")
+        data_uncertainty = np.sqrt(data_mean)
         # equation for uncertainty effeciency std_f = f * sqrt((std_a/A)^2 + (std_b/B)^2) Where f = uncertainty, a = CPS, b = Determined Activity
         #print(uncertainty_efficiency, "= uncertainty of the efficiency of the detector")
         # Activity equation: A = 1 / (std_e/e)^2 + (std_CPS/CPS)^2
@@ -89,6 +90,9 @@ class Final:
         #other_source_mean = 
         #other_source_std = 
         #other_source_activity = 
+        
+        data_range = 
+        
         
         
         
