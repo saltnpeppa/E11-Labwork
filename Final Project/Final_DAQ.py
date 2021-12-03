@@ -78,7 +78,7 @@ class Final:
         
         data_mean = np.mean(self.data["Counts"])
         data_std = np.std(self.data["Counts"])
-        data_uncertainty = np.sqrt(data_mean)
+        #data_uncertainty = np.sqrt(data_mean)
         # equation for uncertainty effeciency std_f = f * sqrt((std_a/A)^2 + (std_b/B)^2) Where f = uncertainty, a = CPS, b = Determined Activity
         #print(uncertainty_efficiency, "= uncertainty of the efficiency of the detector")
         # Activity equation: A = 1 / (std_e/e)^2 + (std_CPS/CPS)^2
