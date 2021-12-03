@@ -10,16 +10,16 @@ import matplotlib.pylot as plt
 
 class Final:
 
-    def __init__(self, uncertainty, data, count=0, timestamp=0):
+    def __init__(self, efficiency, data, count=0, timestamp=0):
         """This method initializes a class instance.
 
         Args:
-            uncertainty (double): Uncertainty coefficient of our detector
+            efficiency (double): Efficiency coefficient of our detector
             timestamp (integer): Sets a relative timestamp of 0 for our data acquisition method
             count (integer): Stores the number of detections we get with our system
             data (array): Stores our data with two columns: counts and timestamp
         """        
-        self.uncertainty = uncertainty
+        self.efficiency = efficiency
         self.timestamp = timestamp
         self.count = count
         self.data = data
