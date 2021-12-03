@@ -5,38 +5,47 @@ import numpy as np
 import math
 import statistics
 import matplotlib
-%matplotlib inline
+# %matplotlib inline
 import matplotlib.pylot as plt
-
 
 class Final:
 
-    timestamp = 0
-    count = 0
-    r = []
-    
+    def __init__(self, uncertainty, data, count=0, timestamp=0):
+        """This method initializes a class instance.
 
-    #time.sleep(90) # REMOVE AFTER GOING BACK INSIDE
+        Args:
+            uncertainty (double): Uncertainty coefficient of our detector
+            timestamp (integer): Sets a relative timestamp of 0 for our data acquisition method
+            count (integer): Stores the number of detections we get with our system
+            data (array): Stores our data with two columns: counts and timestamp
+        """        
+        self.uncertainty = uncertainty
+        self.timestamp = timestamp
+        self.count = count
+        self.data = data
 
-    def __init__(self, uncertainty):
-        pass
+    def acquire_data(self, interval, num_intervals, name):
+        """This method acquires data from our system and returns an array of our counts and timestamps.
 
-    def acquire_data():
+        Args:
+            interval (integer): This is the interval of seconds for which our system will measure counts
+            num_intervals (integer): This is the number of time intervals our system will measure for
+            name (string): This is the name of the file our system will store the data in
 
-        print(sys.argv)
-
-        if len(sys.argv) > 1:
-            interval = int(sys.argv[1]) # Seconds between each measurement
-        if len(sys.argv) > 2:
-            num_intervals = int(sys.argv[2]) # number of intervals measured
-            if len(sys.argv) > 3:
-                name = str(sys.argv[3])
+        Returns:
+            array: Array of counts and timestamps
+        """           
 
         GPIO.setmode(GPIO.BCM)
         GPIO.setup(17, GPIO.IN)
 
+
         def my_callback(channel):
-            
+            """This functions increments our count variable by 1 every time a detection is registered with our sensor.
+
+            Args:
+                channel (GPIO Channel): Channel that our RPi communicates with (GPIO)
+            """            
             self.count += 1
             print("fallen")
             
@@ -46,18 +55,23 @@ class Final:
         myFile2 = open(name + "_" + str(round(time.time()))+".csv", "w")
         myFile2.write("Counts," + " Timestamp" + "\n")
 
-        while timestamp <= num_intervals * interval:
-        timestamp += 1
-        if timestamp % interval == 0:
-            r.append([count, timestamp])
-            myFile2.write(str(count) + ", " + str(timestamp) + "\n")
-            count = 0
-            # timestamp = 0
+        while self.timestamp <= num_intervals * interval:
+
+            self.timestamp += 1
+
+            if self.timestamp % interval == 0:
+                self.data.append([self.count, self.timestamp])
+                myFile2.write(str(self.count) + ", " + str(self.timestamp) + "\n")
+
+                count = 0
+
+            self.timestamp = 0
         
-        print("looped")
-        print(count)
-        print(r)
-        time.sleep(1)
+            print("looped", count, self.data)
+ 
+            time.sleep(1)
+
+        return self.data
 
 
     def parse_data(self):
