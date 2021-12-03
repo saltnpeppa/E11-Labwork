@@ -1,7 +1,7 @@
 import Final_DAQ
 import sys
 
-uncertainty = 0
+efficiency = 0
 data = []
 
 print(sys.argv)
@@ -14,7 +14,7 @@ if len(sys.argv) > 1:
         name = str(sys.argv[3]) # Name of the File
 
 
-final = Final_DAQ.Final(uncertainty, data)
+final = Final_DAQ.Final(efficiency, data)
 
 final.acquire_data(interval, num_intervals, name)
 
