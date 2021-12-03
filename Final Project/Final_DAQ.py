@@ -81,7 +81,10 @@ class Final:
         #data_uncertainty = np.sqrt(data_mean)
         # equation for uncertainty effeciency std_f = f * sqrt((std_a/A)^2 + (std_b/B)^2) Where f = uncertainty, a = CPS, b = Determined Activity
         #print(uncertainty_efficiency, "= uncertainty of the efficiency of the detector")
-        # Activity equation: A = 1 / (std_e/e)^2 + (std_CPS/CPS)^2
+      
+        #Acitivity = CPS/e use this formula
+        # get uncertainties for A
+        #creat range for values and the compare to our unknown values and choose closest to the mean
         #print("The activity of the unknown source is:", A)
         
         #thorium_mean = 
@@ -91,8 +94,12 @@ class Final:
         #other_source_std = 
         #other_source_activity = 
         
-        data_range = 
+        #data_range = 
         
+        
+        #access uncertainty by doing self.efficiency (cps = A * efficiecny)
+        #use A formula
+        #
         
         
         
