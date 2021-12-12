@@ -75,14 +75,23 @@ class Final:
 
 
     def parse_data(self):
+        Eu_152_activity = 213345.9
+        e = Eu_152_activity / np.mean(Europium_152_Data_2021-11-19_D3S.csv)  #need to ask sid how to open this file
+        
+        unknown_activities
         
         data_mean = np.mean(self.data["Counts"])
-        data_std = np.std(self.data["Counts"])
+        unknown_activity = data_mean / e
+        unknown_activity_uncertainty = 
+        
+        #data_std = np.std(self.data["Counts"])
+        
+        
         #data_uncertainty = np.sqrt(data_mean)
         # equation for uncertainty effeciency std_f = f * sqrt((std_a/A)^2 + (std_b/B)^2) Where f = uncertainty, a = CPS, b = Determined Activity
         #print(uncertainty_efficiency, "= uncertainty of the efficiency of the detector")
       
-        #Acitivity = CPS/e use this formula
+        #Activity = CPS/e use this formula
         # get uncertainties for A
         #creat range for values and the compare to our unknown values and choose closest to the mean
         #print("The activity of the unknown source is:", A)
