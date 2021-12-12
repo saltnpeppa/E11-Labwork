@@ -76,13 +76,30 @@ class Final:
 
     def parse_data(self):
         Eu_152_activity = 213345.9
-        e = Eu_152_activity / np.mean(Europium_152_Data_2021-11-19_D3S.csv)  #need to ask sid how to open this file
+        e = Eu_152_activity / np.mean(pd.read_csv(Europium_152_Data_2021-11-19_D3S.csv))
         
-        unknown_activities
+        unknown_activities = []
         
-        data_mean = np.mean(self.data["Counts"])
-        unknown_activity = data_mean / e
-        unknown_activity_uncertainty = 
+        U1_mean = np.mean(pd.read_csv(Unknown_1_Data_2021-11-19_D3S.csv))
+        # U1_data = open(Unknown_1_Data_2021-11-19_D3S.csv)
+        # U1_data = np.loadtxt(file_unknown, delimiter=",")
+        # reduced_U1_data = np.add.reduce(U1_data, axis=1)
+        U1_activity = U1_mean / e
+        U1_activity_uncertainty = np.sqrt(U1_activity)
+        
+        U2_mean = np.mean(pd.read_csv(Unknown_2_Data_2021-11-19_D3S.csv))
+        # U2_data = open(Unknown_2_Data_2021-11-19_D3S.csv)
+        # U2_data = np.loadtxt(U2_data, delimiter=",")
+        # reduced_U2_data = np.add.reduce(U2_data, axis=1)
+        U2_activity = U2_mean / e
+        U2_activity_uncertainty = np.sqrt(U2_activity)
+        
+        U3_mean = np.mean(pd.read_csv(Unknown_3_Data_2021-11-19_D3S.csv))
+        # U3_data = open(Unknown_3_Data_2021-11-19_D3S.csv)
+        # U3_data = np.loadtxt(U3_data, delimiter=",")
+        # reduced_U3_data = np.add.reduce(U3_data, axis=1)
+        U3_activity = U2_mean / e
+        U3_activity_uncertainty = np.sqrt(U3_activity)
         
         #data_std = np.std(self.data["Counts"])
         
@@ -96,13 +113,7 @@ class Final:
         #creat range for values and the compare to our unknown values and choose closest to the mean
         #print("The activity of the unknown source is:", A)
         
-        #thorium_mean = 
-        #thorium_std = 
-        #thorium_activity = 
-        #other_source_mean = 
-        #other_source_std = 
-        #other_source_activity = 
-        
+     
         #data_range = 
         
         
