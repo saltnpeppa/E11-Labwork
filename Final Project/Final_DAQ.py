@@ -101,6 +101,15 @@ class Final:
         U3_activity = U2_mean / e
         U3_activity_uncertainty = np.sqrt(U3_activity)
         
+        background_mean = np.mean(pd.read_csv(Background_Data_2021-11-19_D3S.csv))
+        # background_data = open(Background_Data_2021-11-19_D3S.csv)
+        # background_data = np.loadtxt(background_data, delimiter=",")
+        # reduced_background_data = np.add.reduce(background_data, axis=1)
+        Background_activity = U2_mean / e
+        Background_activity_uncertainty = np.sqrt(Background_activity)
+        
+        
+        
         #data_std = np.std(self.data["Counts"])
         
         
